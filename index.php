@@ -25,7 +25,7 @@
         <div class="row my-4 single-post">
           <img class="col col-lg-4 col-md-12" src="./img/<?php echo $post_image; ?>" alt="Image">
           <div class="media-body col col-lg-8 col-md-12">
-            <h5 class="mt-0"><a href="single.php"><?php echo $post_title; ?> </a></h5>
+            <h5 class="mt-0"><a href="single.php?id=<?php echo $post_id; ?>"><?php echo $post_title; ?> </a></h5>
             <span class="posted"><a href="categories.html" class="category">
               <?php 
                $sql1 = "SELECT * FROM categories WHERE cat_id = :id";
@@ -64,8 +64,5 @@
         </li>
       </ul>
 
-      <?php 
-        echo $_GET['url'];
-      ?>
 
 <?php require_once('./includes/footer.php'); ?>

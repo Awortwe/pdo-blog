@@ -5,22 +5,58 @@
       </nav> <!--End nav-->
 
       <section id="main">
-        <div class="post-single-information">       
+        <div class="post-single-information">
+          <?php
+            if(isset($_GET['id']))
+            {
+              $id = $_GET['id'];
+              $sql = "SELECT * FROM posts WHERE post_id = :id";
+              $stmt = $pdo->prepare($sql);
+              $stmt->execute([
+                ':id'=> $id
+              ]);
+
+              while($post = $stmt->fetch(PDO::FETCH_ASSOC))
+              {
+                $post_title = $post['post_title'];
+                $post_des = $post['post_des'];
+                $post_image = $post['post_image'];
+                $post_date = $post['post_date'];
+                $post_author = $post['post_author'];
+                $post_cat_id = $post['post_cat_id'];
+                $post_status = $post['post_status'];  
+          ?>
           <div class="post-single-info">
               <div class="post-single-80">                 
-                  <h1 class="category-title">Category: JavaScript</h1>
-                  <h2 class="post-single-title">Title: Does anybody still use jQuery</h2>
+                  <h1 class="category-title">Category: 
+                    <?php 
+                      $sql1 = "SELECT * FROM categories WHERE cat_id= :cat_id";
+                      $stmt1 = $pdo->prepare($sql1);
+                      $stmt1->execute([
+                        ':cat_id' => $post_cat_id
+                      ]);
+                      while($cat = $stmt1->fetch(PDO::FETCH_ASSOC)){
+                        $cat_title = $cat['cat_title'];
+                      }
+                      echo $cat_title;
+                    ?>
+                  </h1>
+                  <h2 class="post-single-title">Title: <?php echo $post_title ?></h2>
                   <div class="post-single-box">
-                      Posted by Brad 17 Dec, 12:00PM
+                      Posted by <?php echo $post_author; ?> <?php echo $post_date; ?>
                   </div>
               </div>
           </div>
+          
           <div class="post-main">
-            <img class="d-block" style="width:100%;height:400px" src="./img//security.png" alt="photo" />
+            <img class="d-block" style="width:100%;height:400px" src="./img/<?php echo $post_image; ?>" 
+            alt="<?php echo $post_title; ?>" />
             <p class="mt-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta distinctio unde eligendi nostrum voluptate laudantium expedita, rem error consectetur aperiam. Iusto nesciunt assumenda quibusdam exercitationem rem harum possimus vitae. Excepturi?Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut aliquam natus deleniti perspiciatis, rerum suscipit impedit est neque vitae, voluptatem minus aspernatur temporibus cupiditate minima molestias fugiat dolorem omnis placeat?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa nostrum aperiam ipsam asperiores iusto, numquam distinctio perferendis laborum reiciendis nihil provident veritatis! Ut aliquid assumenda officia impedit corporis, eius deserunt?
+              <?php echo $post_des ?>
             </p>
           </div>
+          <?php }
+        } ?>
         </div>
         <div class="comments">
           <h2 class="comment-count">3 Comments</h2>
