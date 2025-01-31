@@ -67,10 +67,10 @@
     } ?>
 
 
-   
+
   </section>
 
-  <ul class="pagination px-5">
+  <!-- <ul class="pagination px-5">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
@@ -82,6 +82,6 @@
     <li class="page-item">
       <a class="page-link" href="#">Next</a>
     </li>
-  </ul>
+  </ul> -->
 
   <?php require_once('./includes/footer.php'); ?>

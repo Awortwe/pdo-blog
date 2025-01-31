@@ -3,11 +3,30 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-md-5 p-3">
         <?php require_once('./includes/navigation.php'); ?>
       </nav> <!--End nav-->
+      <?php 
+        $post_per_page = 1;
+        $sql = "SELECT * FROM posts";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $post_count = $stmt->rowCount();
+        if(isset($_GET['page'])){
+          $page = $_GET['page'];
+          if($page == 1){
+            $page_id = 0;
+          }else{
+            $page_id = ($post_per_page * $page)- $post_per_page;
+          }
+        }else{
+          $page_id = 0;
+          $page = 1;
+        }
+        $total_pager = ceil($post_count/$post_per_page);
+      ?>
 
       <section id="main" class="mx-5">
         <h2 class="my-3">All Posts</h2>
         <?php 
-          $sql = "SELECT * FROM posts";
+          $sql = "SELECT * FROM posts LIMIT $page_id,$post_per_page";
           $stmt = $pdo->prepare($sql);
           $stmt->execute();
 
@@ -50,19 +69,27 @@
         <?php }?>
       </section>
 
-      <ul class="pagination px-5">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
+      <?php 
+        if($post_count > $post_per_page){ ?>
+          <ul class="pagination px-5">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <?php
+              for($i=1; $i<=$total_pager; $i++){
+                if($i == $page_id + 1)
+                {
+                  echo '<li class="page-item active"><a class="page-link" href="index.php?page='.$i.'">'. $i.'</a></li>';
+                }else{
+                  echo '<li class="page-item"><a class="page-link" href="index.php?page='.$i.'">'.$i.'</a></li>';
+                } 
+              }  
+             ?>   
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+      <?php  }?>
 
 
 <?php require_once('./includes/footer.php'); ?>
