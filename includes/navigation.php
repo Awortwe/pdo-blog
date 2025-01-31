@@ -16,7 +16,7 @@
             $cat_title = $category['cat_title'];
     ?>
         <li class="nav-item <?php echo $cat_id == $id ? 'active': '' ?>">
-            <a class="nav-link" href="./<?php echo $cat_id ?>"><?php echo $cat_title; ?></a>
+            <a class="nav-link" href="http://localhost/blog/category/<?php echo $cat_id ?>"><?php echo $cat_title; ?></a>
         </li>
     <?php } ?>
     </ul>

@@ -26,7 +26,7 @@
           <img class="col col-lg-4 col-md-12" src="./img/<?php echo $post_image; ?>" alt="Image">
           <div class="media-body col col-lg-8 col-md-12">
             <h5 class="mt-0"><a href="single.php?id=<?php echo $post_id; ?>"><?php echo $post_title; ?> </a></h5>
-            <span class="posted"><a href="./<?php echo $post_cat_id ?>" class="category">
+            <span class="posted"><a href="http://localhost/blog/category/<?php echo $post_cat_id ?>" class="category">
               <?php 
                $sql1 = "SELECT * FROM categories WHERE cat_id = :id";
                $stmt1 = $pdo->prepare($sql1);
