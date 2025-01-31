@@ -63,4 +63,9 @@
           <a class="page-link" href="#">Next</a>
         </li>
       </ul>
+
+      <?php 
+        echo $_GET['url'];
+      ?>
+
 <?php require_once('./includes/footer.php'); ?>
