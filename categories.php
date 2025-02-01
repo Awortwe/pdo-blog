@@ -2,9 +2,9 @@
 
     <div class="fluid-container">
     <?php
-        if(isset($_GET['url']))
+        if(isset($_GET['id']))
         {
-          $id = $_GET['url'];
+          $id = $_GET['id'];
           $sql = "SELECT * FROM categories WHERE cat_id=:id";
           $stmt = $pdo->prepare($sql);
           $stmt->execute([
@@ -53,19 +53,8 @@
           <img class="col col-lg-4 col-md-12" src="./img/<?php echo $post_image; ?>" alt="Image">
           <div class="media-body col col-lg-8 col-md-12">
             <h5 class="mt-0"><a href="../single.php?id=<?php echo $post_id; ?>"><?php echo $post_title; ?> </a></h5>
-            <span class="posted"><a href="http://localhost/blog/category/<?php echo $post_cat_id; ?>" class="category">
-              <?php 
-               $sql2 = "SELECT * FROM categories WHERE cat_id = :id";
-               $stmt2 = $pdo->prepare($sql2);
-               $stmt2->execute([
-                ':id'=>$post_cat_id
-               ]);
-               while($cat = $stmt2->fetch(PDO::FETCH_ASSOC))
-               {
-                $cat_title = $cat['cat_title'];
-               }
-               echo $cat_title;
-              ?>
+            <span class="posted"><a href="http://localhost/blog/categories.php?id=<?php echo $post_cat_id; ?>" class="category">
+              <?php echo $cat_t; ?>
             </a> Posted by <?php echo $post_author; ?> at <?php echo $post_date; ?>
             </span>
             <p>
