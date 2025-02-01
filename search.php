@@ -11,11 +11,13 @@
     header("Location: {$url}");
   }
 
-  $post_per_page = 1;
-  $sql1 = "SELECT * FROM posts WHERE post_title LIKE :p_title";
+  $post_per_page = 3;
+  $status = "Published";
+  $sql1 = "SELECT * FROM posts WHERE post_title LIKE :p_title AND post_status = :status";
   $stmt1 = $pdo->prepare($sql1);
   $stmt1->execute([
-    ':p_title' => '%' . $_GET['key'] . '%'
+    ':p_title' => '%' . $_GET['key'] . '%',
+    ':status' => $status
   ]);
   $post_count = $stmt1->rowCount();
   if (isset($_GET['page'])) {
@@ -94,16 +96,26 @@
         if($post_count > $post_per_page){ ?>
           <ul class="pagination px-5">
             <?php 
-              if($page_id == 0){
+              if(isset($_GET['page'])){
+                $prev = $_GET['page'] -1;
+              }else{
+                $prev = 0;
+              }
+              if($prev+1 <= 1){
                 echo ' <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
               }else{
-                echo ' <li class="page-item"><a class="page-link" href="search.php?key='.$_GET['key'].'&page='. $page_id .'" tabindex="-1">Previous</a></li>';
+                echo ' <li class="page-item"><a class="page-link" href="search.php?key='.$_GET['key'].'&page='. $prev .'" tabindex="-1">Previous</a></li>';
               }
             ?>
            
             <?php
+              if(isset($_GET['page'])){
+                $active = $_GET['page'];
+              }else{
+                $active = 1;
+              }
               for($i=1; $i<=$total_pager; $i++){
-                if($i == $page_id + 1)
+                if($i == $active)
                 {
                   echo '<li class="page-item active"><a class="page-link" href="search.php?key='.$_GET['key'].'&page='.$i.'">'. $i.'</a></li>';
                 }else{
@@ -112,8 +124,12 @@
               }  
              ?>
              <?php
-             $next = $page_id + 2;
-              if($page_id + 1 == $total_pager){
+               if(isset($_GET['page'])){
+                  $next = $_GET['page'] + 1;
+                }else{
+                  $next = 2;
+                }
+              if($next-1 >= $total_pager){
                 echo '<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>';
               }else{
                 echo '<li class="page-item"><a class="page-link" href="search.php?key='.$_GET['key'].'&page='.$next.'">Next</a></li>';
