@@ -1,4 +1,9 @@
 <?php require_once('./includes/header.php'); ?>
+<?php 
+  if(!isset($_COOKIE['_ua_'])){
+    header("Location: sign-in.php");
+  }
+?>
     <div class="fluid-container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-md-5">
             <a class="navbar-brand" href="#">Admin</a>
