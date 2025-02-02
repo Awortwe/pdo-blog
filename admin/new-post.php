@@ -1,14 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Post</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-</head>
-<body>
+<?php require_once('./includes/header.php'); ?>
     <div class="fluid-container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-md-5">
             <a class="navbar-brand" href="#">Admin</a>
@@ -23,7 +13,7 @@
         </nav> <!--End nav-->        
 
         <section id="main" class="mx-lg-5 mx-md-2 mx-sm-2 pt-3">
-            <h2 class="pb-3">Edit Post</h2>
+            <h2 class="pb-3">Add New Post</h2>
             <form>
                 <div class="form-group">
                     <label for="post-title">Post Title</label>
@@ -59,5 +49,4 @@
         </section>
 
     </div>
-</body>
-</html>
+<?php require_once('./includes/footer.php'); ?>

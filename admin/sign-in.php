@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Panel - Sign In</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+<?php require_once('./includes/header.php'); ?>
     <div class="container">
         <h2 class="text-uppercase mt-5 sign-in" style="text-align:center">Sign In</h2>
 
@@ -28,5 +18,4 @@
             <button type="submit" class="btn btn-primary m-3 align-self-end">SIGN IN</button>
         </form>
     </div>
-</body>
-</html>
+<?php require_once('./includes/footer.php'); ?>

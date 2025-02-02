@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Administration</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+<?php require_once('./includes/header.php'); ?>
     <div class="fluid-container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-md-5">
         <a class="navbar-brand" href="./index.html">Admin</a>
@@ -99,7 +89,4 @@
 
     </div>
 
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php require_once('./includes/footer.php'); ?>
