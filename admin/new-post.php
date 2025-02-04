@@ -5,17 +5,7 @@
   }
 ?>
     <div class="fluid-container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-md-5">
-            <a class="navbar-brand" href="#">Admin</a>
-            <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item mr-2 active">
-                    <a class="nav-link" href="#">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categories</a>
-                </li>
-            </ul>
-        </nav> <!--End nav-->        
+        <?php  require_once('./includes/navigation.php'); ?>          
 
         <section id="main" class="mx-lg-5 mx-md-2 mx-sm-2 pt-3">
             <h2 class="pb-3">Add New Post</h2>

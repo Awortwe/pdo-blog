@@ -5,17 +5,7 @@
   }
 ?>
     <div class="fluid-container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-md-5">
-        <a class="navbar-brand" href="./index.html">Admin</a>
-          <ul class="navbar-nav d-flex flex-row">
-            <li class="nav-item mr-2 active">
-              <a class="nav-link" href="./index.html">Posts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./categories.html">Categories</a>
-            </li>
-          </ul>
-      </nav> <!--End nav-->
+      <?php  require_once('./includes/navigation.php'); ?>  
 
       <section id="main" class="mx-lg-5 mx-md-2 mx-sm-2">
         <div class="d-flex flex-row justify-content-between">
