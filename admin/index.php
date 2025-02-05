@@ -10,7 +10,7 @@ if (!isset($_COOKIE['_ua_'])) {
   <section id="main" class="mx-lg-5 mx-md-2 mx-sm-2">
     <div class="d-flex flex-row justify-content-between">
       <h2 class="my-3">All Posts</h2>
-      <a class="btn btn-secondary align-self-center d-block" href="#">Add New Post</a>
+      <a class="btn btn-secondary align-self-center d-block" href="new-post.php">Add New Post</a>
     </div>
 
     <table class="table">
